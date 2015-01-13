@@ -25,6 +25,10 @@
          (dom/section #js {:id "VRE" 
                            :tabIndex 0
                            :onKeyDown #(put! event-bus (fn [] (.preventDefault %)))}
+                      ;; In the latest attempt, I tried to pack the
+                      ;; function in a closure and pass it along.
+                      ;; When it gets to the other side, the object it
+                      ;; refers to (this) is no longer there
                       (dom/input nil)))))
    app-state
    {:target (. js/document (getElementById "app"))}))
